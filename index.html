@@ -3,3 +3,63 @@
     <title>Rock Paper Scissors the GAME</title>
 </head>
 
+<body>
+<script>
+console.log("Welcome, please choose between Paper, Rock or Scissors")
+    var answer = prompt("Please submit your answer");
+    var upperCased = answer.toUpperCase();
+    if (upperCased === "PAPER" ||upperCased === "ROCK"||upperCased === "SCISSORS"){
+        
+    }
+    else{
+        console.log("Invalid response. Please choose between Paper, Rock or Scissors")
+    }
+
+    var computerSelection = Math.floor(Math.random() * (3-1) +1)
+
+    var computerAnswer = "";
+    if (computerSelection === 0){
+        computerAnswer = "PAPER"
+    }
+    else if (computerSelection === 1){
+        computerAnswer = "ROCK"
+    }
+    else if (computerSelection === 2){
+        computerAnswer = "SCISSORS"
+    }
+
+    if (upperCased === "PAPER" && computerAnswer === "ROCK"){
+        displayResults ("Player wins!", upperCased,computerAnswer)
+    }
+    else if (upperCased === "ROCK" && computerAnswer === "SCISSORS"){
+        displayResults ("Player wins!", upperCased,computerAnswer)
+    }
+    else if (upperCased === "SCISSORS" && computerAnswer === "PAPER"){
+        displayResults ("Player wins!", upperCased,computerAnswer)
+    }
+    
+    if (upperCased === "PAPER" && computerAnswer === "SCISSORS"){
+        displayResults ("You Lose! The computer wins!", upperCased,computerAnswer)
+    }
+    else if (upperCased === "SCISSORS " && computerAnswer === "ROCK"){
+        displayResults ("You Lose! The computer wins!", upperCased,computerAnswer)
+    }
+    else if (upperCased === "ROCK" && computerAnswer === "PAPER"){
+        displayResults ("You Lose! The computer wins!", upperCased,computerAnswer)
+    }
+
+    if (upperCased === "PAPER" && computerAnswer === "PAPER"){
+        displayResults ("It's a draw!", upperCased,computerAnswer)
+    }
+    else if (upperCased === "ROCK" && computerAnswer === "ROCK"){
+        displayResults ("It's a draw!", upperCased,computerAnswer)
+    }
+    else if (upperCased === "SCISSORS" && computerAnswer === "SCISSORS"){
+        displayResults ("It's a draw!", upperCased,computerAnswer)
+    }
+    function displayResults (result,playerChoice,computerChoice){
+            console.log (result +" Player Choice: "+ playerChoice + " Computer Choice: " + computerChoice )
+        }
+
+</script>
+</body>
