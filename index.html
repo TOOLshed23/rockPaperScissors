@@ -6,60 +6,100 @@
 <body>
 <script>
 console.log("Welcome, please choose between Paper, Rock or Scissors")
-    var answer = prompt("Please submit your answer");
-    var upperCased = answer.toUpperCase();
-    if (upperCased === "PAPER" ||upperCased === "ROCK"||upperCased === "SCISSORS"){
+    //var answer = prompt("Please submit your answer");
+
+    function computerPlay(){
+        let computerSelection = Math.floor(Math.random() * (3-1) +1)
+
+    //var computerPlay = "";
+    if (computerSelection === 0){
+        return "PAPER"
+    }
+    else if (computerSelection === 1){
+        return "ROCK"
+    }
+    else if (computerSelection === 2){
+        return "SCISSORS"
+    }
+}
+
+    function playRound (yourAnswer,computerPlay){
+        var yourAnswer = yourAnswer.toUpperCase();
+    if (yourAnswer === "PAPER" || yourAnswer === "ROCK"|| yourAnswer === "SCISSORS"){
         
     }
     else{
         console.log("Invalid response. Please choose between Paper, Rock or Scissors")
     }
 
-    var computerSelection = Math.floor(Math.random() * (3-1) +1)
-
-    var computerAnswer = "";
-    if (computerSelection === 0){
-        computerAnswer = "PAPER"
+    if (yourAnswer === "PAPER" && computerPlay === "ROCK"){
+        playerScore++
+        return "Player wins! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    else if (computerSelection === 1){
-        computerAnswer = "ROCK"
+    else if (yourAnswer === "ROCK" && computerPlay === "SCISSORS"){
+        playerScore++
+        return "Player wins! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    else if (computerSelection === 2){
-        computerAnswer = "SCISSORS"
-    }
-
-    if (upperCased === "PAPER" && computerAnswer === "ROCK"){
-        displayResults ("Player wins!", upperCased,computerAnswer)
-    }
-    else if (upperCased === "ROCK" && computerAnswer === "SCISSORS"){
-        displayResults ("Player wins!", upperCased,computerAnswer)
-    }
-    else if (upperCased === "SCISSORS" && computerAnswer === "PAPER"){
-        displayResults ("Player wins!", upperCased,computerAnswer)
+    else if (yourAnswer === "SCISSORS" && computerPlay === "PAPER"){
+        playerScore++
+        return "Player wins! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
     
-    if (upperCased === "PAPER" && computerAnswer === "SCISSORS"){
-        displayResults ("You Lose! The computer wins!", upperCased,computerAnswer)
+    if (yourAnswer === "PAPER" && computerPlay === "SCISSORS"){
+        computerScore++
+        return "You Lose! The computer wins! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    else if (upperCased === "SCISSORS " && computerAnswer === "ROCK"){
-        displayResults ("You Lose! The computer wins!", upperCased,computerAnswer)
+    else if (yourAnswer === "SCISSORS " && computerPlay === "ROCK"){
+        computerScore++
+        return "You Lose! The computer wins! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    else if (upperCased === "ROCK" && computerAnswer === "PAPER"){
-        displayResults ("You Lose! The computer wins!", upperCased,computerAnswer)
+    else if (yourAnswer === "ROCK" && computerPlay === "PAPER"){
+        computerScore++
+        return "You Lose! The computer wins! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
 
-    if (upperCased === "PAPER" && computerAnswer === "PAPER"){
-        displayResults ("It's a draw!", upperCased,computerAnswer)
+    if (yourAnswer === "PAPER" && computerPlay === "PAPER"){
+        return "It's a draw! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    else if (upperCased === "ROCK" && computerAnswer === "ROCK"){
-        displayResults ("It's a draw!", upperCased,computerAnswer)
+    else if (yourAnswer === "ROCK" && computerPlay === "ROCK"){
+        return "It's a draw! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    else if (upperCased === "SCISSORS" && computerAnswer === "SCISSORS"){
-        displayResults ("It's a draw!", upperCased,computerAnswer)
+    else if (yourAnswer === "SCISSORS" && computerPlay === "SCISSORS"){
+        return "It's a draw! Your answer: " + yourAnswer + ", Computer: " + computerPlay
     }
-    function displayResults (result,playerChoice,computerChoice){
-            console.log (result +" Player Choice: "+ playerChoice + " Computer Choice: " + computerChoice )
+} 
+    function game (){
+        playerScore = 0
+        computerScore = 0
+        let playerSelction
+        let i
+        
+        for (i=0; i<5; i++){
+            playerSelction = prompt ("Please choose either Paper, Rock, or Scissors")
+            
+            let result = playRound(playerSelction,computerPlay())
+            console.log(result)
         }
+        if(playerScore > computerScore){
+                console.log("You are the winner!")
+        }
+
+        else if(playerScore < computerScore){
+            console.log("You lose!")
+        }
+
+        else {
+            console.log("Match tied!")
+        }
+            console.log("Final score: player: " + playerScore + " computer: " + computerScore)
+
+    }
+
+    game()
+    //function displayResults (result,playerChoice,computerChoice){
+    //       console.log (result +" Player Choice: "+ playerChoice + " Computer Choice: " + computerChoice )
+    //  }
+
 
 </script>
 </body>
